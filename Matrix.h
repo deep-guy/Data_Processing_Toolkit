@@ -1,7 +1,7 @@
 #ifndef MATRIX_H_
 #define MATRIX_H_
 
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
 // This is the base class that we will be using for the project;
@@ -11,18 +11,22 @@ class Matrix
 {
     private:
         int _m, _n;
-        int** _matrix;
+        // This is used because vector can return the size
+        // We can directly get the dimensions of the grid without needing the user to input it
+        // Note the type is a double because our calculations will be floating point based
+        vector<vector<double> > _matrix; 
+        vector<string> _names; // Stores the names in the frist row of the csv
     
     public:
         Matrix(string filename);
         Matrix(int, int);
-        ~Matrix();
+        // ~Matrix(); Vectors don't need explicit destructors
         
         //getters
-        void output_to_csv();
+        void output_to_csv(string filename); // Different people need to write in different files
         int get_rows() {return _m;}
         int get_columns() {return _n;}
-        int** get_matrix() {return _matrix;}
+        vector<vector<double> > get_matrix() {return _matrix;}
 };
 
 #endif
