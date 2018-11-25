@@ -1,5 +1,10 @@
 #include "Matrix.h"
 
+Matrix::Matrix()
+{
+
+}
+
 Matrix::Matrix(int m, int n)
 {
     _m = m;
@@ -59,6 +64,26 @@ void Matrix::output_to_csv(string filename)
     }
     out<<"eof"<<endl;
 }
+
+vector<double> Matrix::get_row(int i)
+{
+  return _matrix[i];
+}
+
+vector<double> Matrix::get_column(int k)
+{
+  vector<double> column;
+  for(int i=0;i<_m;i++)
+  {
+      column.push_back(_matrix[i][k]);
+  }
+}
+
+void Matrix::setElement(int i,int j,double k)
+{
+    _matrix[i][j] = k;
+}
+
 
 int main()
 {

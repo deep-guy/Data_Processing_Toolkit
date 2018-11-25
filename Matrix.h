@@ -18,15 +18,21 @@ class Matrix
         vector<string> _names; // Stores the names in the frist row of the csv
     
     public:
+        Matrix();
         Matrix(string filename);
         Matrix(int, int);
         // ~Matrix(); Vectors don't need explicit destructors
+
         
         //getters
-        void output_to_csv(string filename); // Different people need to write in different files
         int get_rows() {return _m;}
         int get_columns() {return _n;}
+        vector<double> get_row(int i);
+        vector<double> get_column(int i);
         vector<vector<double> > get_matrix() {return _matrix;}
+
+        void output_to_csv(string filename); // Different people need to write in different files
+        void setElement(int i,int j,double k);
 };
 
 #endif
