@@ -67,16 +67,17 @@ void Matrix::output_to_csv(string filename)
 
 vector<double> Matrix::get_row(int i)
 {
-  return _matrix[i];
+    return _matrix[i];
 }
 
 vector<double> Matrix::get_column(int k)
 {
-  vector<double> column;
-  for(int i=0;i<_m;i++)
-  {
-    column.push_back(_matrix[i][k]);
-  }
+    vector<double> column;
+    for(int i=0;i<_m;i++)
+    {
+        column.push_back(_matrix[i][k]);
+    }
+    return column;
 }
 
 void Matrix::setElement(int i,int j,double k)

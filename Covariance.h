@@ -17,4 +17,4 @@ class Covariance: public Square
     void compute();
 };
 
-#endif;
+#endif

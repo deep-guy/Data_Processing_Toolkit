@@ -13,7 +13,10 @@ class Square : public Matrix
     Square(string filename): Matrix(filename){};  
   protected:
     // The real computation for your algorithm
-    // This should be the only public function in any inherited class. The rest are all private, visible to the inherited class only
+    // This should be the only public function in any inherited class
+    // The rest are all private, visible to the inherited class only
+    // Or you can add them to useful.cpp if they are generic
     virtual void compute() = 0; 
 };
-#endif;
+
+#endif
