@@ -8,7 +8,7 @@ DistanceMatrix::DistanceMatrix(Matrix &input)
     vector<vector<double> > v = _output.get_matrix();
     v.resize(_input.get_rows());
     for(int i = 0; i < _input.get_rows(); i++) 
-        v[i].assign(_input.get_rows,0);
+        v[i].assign(_input.get_rows(),0);
     _output.setMatrix(v);
 }
 

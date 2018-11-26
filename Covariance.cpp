@@ -56,10 +56,10 @@ void Covariance::compute()
   }
 
   // for(int i=0;i<variance.size();i++) cout<<variance[i]<<" ";cout<<endl;
-  // sorted_normalized(variance,getOrigPos);
+  sorted_normalized(variance,getOrigPos);
   
   // Setting the permutatiom
-  // for(int i=0;i<_permutation.size();i++) _permutation[i] = getOrigPos[_permutation[i]];
+  for(int i=0;i<_permutation.size();i++) _permutation[i] = getOrigPos[_permutation[i]];
 
   Matrix ans(get_columns(),get_columns());
 
