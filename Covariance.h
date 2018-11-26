@@ -7,7 +7,6 @@
 class Covariance: public Square
 {
   private:
-    Matrix orig;
     double getVariance(vector<double> &v);
     string filename;
 

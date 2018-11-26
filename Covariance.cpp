@@ -45,26 +45,32 @@ void Covariance::compute()
   // vector<pair<double,string> > variances;
   vector<double> variance;
   map<int,int> getOrigPos;
-  for(int i=0;i<orig.get_columns();i++)
+  for(int i=0;i<get_columns();i++)
   {
     vector<double> temp;
-    for(int j=0;j<orig.get_rows();j++)
+    for(int j=0;j<get_rows();j++)
     {
-      temp.pu(orig.get_matrix()[j][i]);
+      temp.pu(get_matrix()[j][i]);
     }
     variance.pu(getVariance(temp));
   }
 
+  // for(int i=0;i<variance.size();i++) cout<<variance[i]<<" ";cout<<endl;
   // sorted_normalized(variance,getOrigPos);
   
-  Matrix ans(orig.get_columns(),orig.get_columns());
+  // Setting the permutatiom
+  // for(int i=0;i<_permutation.size();i++) _permutation[i] = getOrigPos[_permutation[i]];
+
+  Matrix ans(get_columns(),get_columns());
 
   for(int i=0;i<variance.size();i++)
   {
     for(int j=0;j<variance.size();j++)
     {
-      vector<double> v = orig.get_column(getOrigPos[i]);
-      vector<double> w = orig.get_column(getOrigPos[j]);
+      // vector<double> v = get_column(getOrigPos[i]);
+      // vector<double> w = get_column(getOrigPos[j]);
+      vector<double> v = get_column(i);
+      vector<double> w = get_column(j);
       sub(v,getAvg(v));
       sub(w,getAvg(w));
       double a = dot(v,w);
@@ -73,6 +79,7 @@ void Covariance::compute()
     }
   }
 
+  ans.setPermutation(_permutation);
   normalize(ans.get_matrix());
   ans.output_to_csv("Covariance Matrix.csv");
 

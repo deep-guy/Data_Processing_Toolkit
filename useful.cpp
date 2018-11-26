@@ -118,4 +118,9 @@ void sorted_normalized(vector<double> &v,map<int,int> &d)
   }
 }
 
+void p(vector<double>&v)
+{
+  for(int i=0;i<v.size();i++) cout<<v[i]<<" ";cout<<endl;
+}
+
 

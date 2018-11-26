@@ -2,6 +2,7 @@
 #define MATRIX_H_
 
 #include <bits/stdc++.h>
+#include"useful.h"
 using namespace std;
 
 // This is the base class that we will be using for the project;
@@ -34,9 +35,11 @@ class Matrix
         vector<double> get_column(int i);
         vector<vector<double> >& get_matrix() {return _matrix;}
         vector<string> get_names() {return _names;}
+        vector<int>& getPermutation() {return _permutation;}
 
         void output_to_csv(string filename); // Make sure the filename ends with a ".csv"
         void setElement(int i,int j,double k);
+        void setPermutation(vector<int>&v) {_permutation = v;}
 };
 
 #endif

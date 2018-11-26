@@ -12,4 +12,5 @@ void normalize(vector<vector<double> > &v);
 void sorted_normalized(vector<double> &v,map<int,int> &d);
 double min(double x,double y);
 double max(double x,double y);
+void p(vector<double> &v);
 #endif
