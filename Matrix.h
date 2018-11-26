@@ -37,6 +37,7 @@ class Matrix
 
         void output_to_csv(string filename); // Make sure the filename ends with a ".csv"
         void setElement(int i,int j,double k);
+        void setMatrix(vector<vector<double> > v) { _matrix = v;}
 };
 
 #endif
