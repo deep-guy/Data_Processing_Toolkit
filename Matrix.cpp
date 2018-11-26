@@ -9,11 +9,8 @@ Matrix::Matrix(int m, int n)
 {
     _m = m;
     _n = n;
-    // _matrix = new int*[_m];
-    // for (int i = 0; i < _m; i++)
-    // {
-    //     _matrix[i] = new int[_n];
-    // }
+    // v.resize(_m);
+    // for(int i=0;i<_m;i++) v[i].assign(_n,0);
 }
 
 Matrix::Matrix(string filename)
@@ -53,6 +50,9 @@ void Matrix::output_to_csv(string filename)
 {
     ofstream out;
     out.open(filename);
+
+    for(int i=0;i<_permutation.size();i++) out<<_permutation[i]<<" ";cout<<endl;
+
     out<<_m<<" "<<_n<<endl;
     for(int i=0;i<_m;i++)
     {
@@ -75,7 +75,7 @@ vector<double> Matrix::get_column(int k)
   vector<double> column;
   for(int i=0;i<_m;i++)
   {
-      column.push_back(_matrix[i][k]);
+    column.push_back(_matrix[i][k]);
   }
 }
 

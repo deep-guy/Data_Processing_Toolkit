@@ -1,24 +1,20 @@
 #ifndef COVARIANCE
 #define COVARIANCE
 #include "Matrix.h"
+#include "useful.h"
+#include "Square.h"
 
-class Covariance
+class Covariance: public Square
 {
   private:
     Matrix orig;
+    double getVariance(vector<double> &v);
+    string filename;
 
   public:
-    Covariance(Matrix &orig);
+    Covariance(string filename):Square(filename){};
 
     void compute();
-    double getVariance(vector<double> &v);
-    double getAvg(vector<double> &v);
-    double dot(vector<double> &v, vector<double> &w);
-    void sub(vector<double>&v,int k);
-    void normalize(vector<double> &v);
-    void sorted_normalized(vector<double> &v,map<int,int> &d);
-    double min(double x,double y);
-    double max(double x,double y);
 };
 
 #endif;

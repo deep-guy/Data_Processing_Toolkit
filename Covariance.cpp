@@ -5,15 +5,8 @@
 #define pu push_back
 #define INF 1000000001
 #define MOD 1000000007
-#define ll long long int
-#define ld long double
-#define vi vector<int>
-#define vll vector<long long int>
 #define fi first
 #define se second
-#define sc(n) scanf("%d",&n);
-#define scll(n) scanf("%lld",&n);
-#define scld(n) scanf("%Lf",&n);
 #define scr(s) {char temp[1000000];scanf("%s",temp);s = temp;}
 #define t1(x)                cerr<<#x<<" : "<<x<<endl
 #define t2(x, y)             cerr<<#x<<" : "<<x<<" "<<#y<<" : "<<y<<endl
@@ -27,18 +20,11 @@
 
 using namespace std;
 
-Covariance::Covariance(Matrix &orig)
-{
-  this->orig = orig;
-}
+// Covariance::Covariance(Matrix &orig)
+// {
+//   this->orig = orig;
+// }
 
-double Covariance::getAvg(vector<double> &v)
-{
-  double avg = 0;
-  for(int i=0;i<v.size();i++) avg+=v[i];
-  avg/=v.size();
-  return avg;
-}
 
 double Covariance::getVariance(vector<double> &v)
 {
@@ -53,75 +39,6 @@ double Covariance::getVariance(vector<double> &v)
   return variance;
 }
 
-
-double Covariance::dot(vector<double> &v, vector<double> &w)
-{
-  double ans = 0;
-  for(int i=0;i<v.size();i++)
-  {
-    ans+=v[i]*w[i];
-  }
-  return ans;
-}
-
-void Covariance::sub(vector<double> &v,int k)
-{
-  for(int i=0;i<v.size();i++) v[i]-=k;
-}
-
-double Covariance::min(double x,double y)
-{
-  if(x<y) return x;
-  return y;
-}
-
-double Covariance::max(double x,double y)
-{
-  if(x>y) return x;
-  return y;
-}
-
-void Covariance::normalize(vector<double> &v)
-{
-  double max1 = -1, min1 = INF;
-  for(int i=0;i<v.size();i++)
-  {
-    min1 = min(min1,v[i]);
-    max1 = max(max1,v[i]);
-  }
-
-  if(max1==min1)
-  {
-    for(int i=0;i<v.size();i++) v[i] = 1;
-  }
-  else
-  {
-    for(int i=0;i<v.size();i++)
-    {
-      v[i] = (v[i]-min1)/(max1-min1);
-    }
-  }
-}
-
-void Covariance::sorted_normalized(vector<double> &v,map<int,int> &d)
-{
-  vector<pair<double,int> > temp_variance;
-  normalize(v);
-
-  for(int i=0;i<v.size();i++) 
-  {
-    temp_variance.pu(mp(v[i],i));
-  }
-
-  sort(temp_variance.begin(),temp_variance.end());
-
-  for(int i=0;i<temp_variance.size();i++) 
-  {
-    v[i] = temp_variance[i].fi;
-    d[i] = temp_variance[i].se;
-  }
-
-}
 
 void Covariance::compute()
 {
@@ -138,7 +55,7 @@ void Covariance::compute()
     variance.pu(getVariance(temp));
   }
 
-  sorted_normalized(variance,getOrigPos);
+  // sorted_normalized(variance,getOrigPos);
   
   Matrix ans(orig.get_columns(),orig.get_columns());
 
@@ -156,6 +73,7 @@ void Covariance::compute()
     }
   }
 
+  normalize(ans.get_matrix());
   ans.output_to_csv("Covariance Matrix.csv");
 
 }
