@@ -69,9 +69,65 @@ void Covariance::sub(vector<double> &v,int k)
   for(int i=0;i<v.size();i++) v[i]-=k;
 }
 
+double Covariance::min(double x,double y)
+{
+  if(x<y) return x;
+  return y;
+}
+
+double Covariance::max(double x,double y)
+{
+  if(x>y) return x;
+  return y;
+}
+
+void Covariance::normalize(vector<double> &v)
+{
+  double max1 = -1, min1 = INF;
+  for(int i=0;i<v.size();i++)
+  {
+    min1 = min(min1,v[i]);
+    max1 = max(max1,v[i]);
+  }
+
+  if(max1==min1)
+  {
+    for(int i=0;i<v.size();i++) v[i] = 1;
+  }
+  else
+  {
+    for(int i=0;i<v.size();i++)
+    {
+      v[i] = (v[i]-min1)/(max1-min1);
+    }
+  }
+}
+
+void Covariance::sorted_normalized(vector<double> &v,map<int,int> &d)
+{
+  vector<pair<double,int> > temp_variance;
+  normalize(v);
+
+  for(int i=0;i<v.size();i++) 
+  {
+    temp_variance.pu(mp(v[i],i));
+  }
+
+  sort(temp_variance.begin(),temp_variance.end());
+
+  for(int i=0;i<temp_variance.size();i++) 
+  {
+    v[i] = temp_variance[i].fi;
+    d[i] = temp_variance[i].se;
+  }
+
+}
+
 void Covariance::compute()
 {
-  vector<double> variances;
+  // vector<pair<double,string> > variances;
+  vector<double> variance;
+  map<int,int> getOrigPos;
   for(int i=0;i<orig.get_columns();i++)
   {
     vector<double> temp;
@@ -79,17 +135,19 @@ void Covariance::compute()
     {
       temp.pu(orig.get_matrix()[j][i]);
     }
-    variances.pu(getVariance(temp));
+    variance.pu(getVariance(temp));
   }
 
+  sorted_normalized(variance,getOrigPos);
+  
   Matrix ans(orig.get_columns(),orig.get_columns());
 
-  for(int i=0;i<variances.size();i++)
+  for(int i=0;i<variance.size();i++)
   {
-    for(int j=0;j<variances.size();j++)
+    for(int j=0;j<variance.size();j++)
     {
-      vector<double> v = orig.get_column(i);
-      vector<double> w = orig.get_column(j);
+      vector<double> v = orig.get_column(getOrigPos[i]);
+      vector<double> w = orig.get_column(getOrigPos[j]);
       sub(v,getAvg(v));
       sub(w,getAvg(w));
       double a = dot(v,w);
@@ -97,6 +155,9 @@ void Covariance::compute()
       ans.setElement(i,j,a);
     }
   }
+
+  ans.output_to_csv("Covariance Matrix.csv");
+
 }
 
 

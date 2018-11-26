@@ -30,8 +30,9 @@ class Matrix
         vector<double> get_row(int i);
         vector<double> get_column(int i);
         vector<vector<double> > get_matrix() {return _matrix;}
+        vector<string> get_names() {return _names;}
 
-        void output_to_csv(string filename); // Different people need to write in different files
+        void output_to_csv(string filename); // Make sure the filename ends with a ".csv"
         void setElement(int i,int j,double k);
 };
 
