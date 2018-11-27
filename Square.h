@@ -10,7 +10,8 @@ class Square : public Matrix
 {
 
   public: 
-    Square(string filename): Matrix(filename){};  
+    Square(string filename): Matrix(filename){};
+    Square(int m): Matrix(m, m){};  
   protected:
     // The real computation for your algorithm
     // This should be the only public function in any inherited class

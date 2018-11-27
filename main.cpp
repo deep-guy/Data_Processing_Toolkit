@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 #include "Covariance.h"
+#include "Distance_Matrix.h"
 #define mt make_tuple
 #define mp make_pair
 #define pu push_back
@@ -29,8 +30,10 @@ using namespace std;
 
 int main()
 {
-  Covariance c("data.csv");
-  c.compute();
-  return 0;
+//   Covariance c("data.csv");
+//   c.compute();
+    DistanceMatrix d("data.csv");
+    d.compute();
+    return 0;
 }
 

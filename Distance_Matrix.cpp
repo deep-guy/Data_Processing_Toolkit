@@ -1,24 +1,24 @@
 #include "Distance_Matrix.h"
 using namespace std;
 
-DistanceMatrix::DistanceMatrix(Matrix &input)
-{
-    this->_input = input;
-    _output = Matrix(_input.get_rows(), _input.get_rows());
-    vector<vector<double> > v = _output.get_matrix();
-    v.resize(_input.get_rows());
-    for(int i = 0; i < _input.get_rows(); i++) 
-        v[i].assign(_input.get_rows(),0);
-    _output.setMatrix(v);
-}
+// DistanceMatrix::DistanceMatrix(Matrix &input)
+// {
+//     this->= input;
+//     _output = Matrix(get_rows(), get_rows());
+//     vector<vector<double> > v = _output.get_matrix();
+//     v.resize(get_rows());
+//     for(int i = 0; i < get_rows(); i++) 
+//         v[i].assign(get_rows(),0);
+//     _output.setMatrix(v);
+// }
 
 void DistanceMatrix::computeAverage()
 {
     double average = 0;
-    for (int i = 0; i < _input.get_columns(); i++)
+    for (int i = 0; i < get_columns(); i++)
     {
-        vector<double> column = _input.get_column(i);
-        for (int j = 0; j < _input.get_rows(); j++)
+        vector<double> column = get_column(i);
+        for (int j = 0; j < get_rows(); j++)
         {
             average += column[j];
         }
@@ -32,10 +32,10 @@ void DistanceMatrix::computeDistance()
     double distance;
     _max_vector = 0;
     _min_vector = 100000000000;
-    for (int i = 0; i < _input.get_rows(); i++)
+    for (int i = 0; i < get_rows(); i++)
     {
-        vector<double> row = _input.get_row(i);
-        for (int j = 0; j < _input.get_columns(); j++)
+        vector<double> row = get_row(i);
+        for (int j = 0; j < get_columns(); j++)
         {
             double diff = row[j] - _avg_array[j];
             distance += diff * diff;
@@ -53,7 +53,7 @@ void DistanceMatrix::computeDistance()
 void DistanceMatrix::normaliseDistance()
 {
     double divisor = _max_vector - _min_vector;
-    for (int i = 0; i < _input.get_rows(); i++)
+    for (int i = 0; i < get_rows(); i++)
     {
         _dist_array[i] = (_dist_array[i] - _min_vector)/ divisor;
     }
@@ -61,6 +61,13 @@ void DistanceMatrix::normaliseDistance()
 
 void DistanceMatrix::createDistanceMatrix()
 {
+    _output = Matrix(get_rows(), get_rows());
+    vector<vector<double> > v = _output.get_matrix();
+    v.resize(get_rows());
+    for(int i = 0; i < get_rows(); i++) 
+        v[i].assign(get_rows(),0);
+    _output.setMatrix(v);
+
     vector<pair<double, int> > temp_distance;   
     for (int i = 0; i < _dist_array.size(); i++)
     {
@@ -80,9 +87,9 @@ void DistanceMatrix::createDistanceMatrix()
         for (int j = 0; j < _dist_array.size(); j++)
         {
             double distance = 0;
-            for (int k = 0; k < _input.get_row(_sort_map[i]).size(); k++)
+            for (int k = 0; k < get_row(_sort_map[i]).size(); k++)
             {
-                double diff = _input.get_row(_sort_map[i])[k] - _input.get_row(_sort_map[j])[k];
+                double diff = get_row(_sort_map[i])[k] - get_row(_sort_map[j])[k];
                 distance += diff*diff;
             }
             distance = sqrt(distance);
@@ -91,4 +98,12 @@ void DistanceMatrix::createDistanceMatrix()
     }
 
     _output.output_to_csv("DistMat.txt");
+}
+
+void DistanceMatrix::compute()
+{
+    computeAverage();
+    computeDistance();
+    normaliseDistance();
+    createDistanceMatrix();
 }
