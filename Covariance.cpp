@@ -67,10 +67,10 @@ void Covariance::compute()
   {
     for(int j=0;j<variance.size();j++)
     {
-      // vector<double> v = get_column(getOrigPos[i]);
-      // vector<double> w = get_column(getOrigPos[j]);
-      vector<double> v = get_column(i);
-      vector<double> w = get_column(j);
+      vector<double> v = get_column(getOrigPos[i]);
+      vector<double> w = get_column(getOrigPos[j]);
+      // vector<double> v = get_column(i);
+      // vector<double> w = get_column(j);
       sub(v,getAvg(v));
       sub(w,getAvg(w));
       double a = dot(v,w);

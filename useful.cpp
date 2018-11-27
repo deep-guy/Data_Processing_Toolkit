@@ -110,7 +110,8 @@ void sorted_normalized(vector<double> &v,map<int,int> &d)
   }
 
   sort(temp_variance.begin(),temp_variance.end());
-
+  reverse(temp_variance.begin(),temp_variance.end());
+  
   for(int i=0;i<temp_variance.size();i++) 
   {
     v[i] = temp_variance[i].fi;
