@@ -23,27 +23,24 @@
 #define t(...) GET_MACRO(__VA_ARGS__,t5, t4, t3, t2, t1)(__VA_ARGS__)
 #define _ cout<<"here"<<endl;
 
-#include "Record.h"
+#include "Dataset.h"
 
 using namespace std;
 
-Record::Record(){}
-Record::Record(vector<string> record_ar1)
+Dataset::Dataset(){}
+Dataset::Dataset(vector<vector<string>> dataset_ar1)
 {
-    record_ar = record_ar1;
+    dataset_ar = dataset_ar1;
 }
-Record::~Record()
+Dataset::~Dataset()
 {
-    for (int i = 0; i < record_ar.size(); i ++)
+    for (int i = 0; i < dataset_ar.size(); i ++)
     {
-        record_ar[i].clear();
+        dataset_ar[i].clear();
     }
+    dataset_ar.clear();
 }
-Record::Record(const Record& record1)
+Dataset::Dataset(const Dataset& dataset1)
 {
-    for (int i = 0; i < record1.record_ar.size(); i ++)
-    {
-        record_ar.push_back(record1.record_ar[i]);
-    }
+    dataset_ar = dataset1.dataset_ar;
 }
-
