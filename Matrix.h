@@ -15,19 +15,19 @@ class Matrix
         // This is used because vector can return the size
         // We can directly get the dimensions of the grid without needing the user to input it
         // Note the type is a double because our calculations will be floating point based
-        vector<vector<double> > _matrix; 
+        vector<vector<double> > _matrix;
         vector<string> _names; // Stores the names in the frist row of the csv
 
-    protected:    
+    protected:
         vector<int> _permutation;
-    
+
     public:
         Matrix();
-        Matrix(string filename); 
+        Matrix(string filename);
         Matrix(int, int);
         // ~Matrix(); Vectors don't need explicit destructors
 
-        
+
         //getters
         int get_rows() {return _m;}
         int get_columns() {return _n;}
@@ -41,6 +41,8 @@ class Matrix
         void setElement(int i,int j,double k);
         void setPermutation(vector<int>&v) {_permutation = v;}
         void setMatrix(vector<vector<double> > v) {_matrix = v;}
+        int set_rows(int val) {_m=val;}
+        int set_columns(int val) {_n=val;}
 };
 
 #endif
