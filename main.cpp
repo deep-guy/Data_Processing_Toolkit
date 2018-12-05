@@ -3,6 +3,7 @@
 #include "Distance_Matrix.h"
 #include "Dataset.h"
 #include "ROBINSONIAN_REORDERING.h"
+#include "Basic_Min_Ordering.h" 
 #define mt make_tuple
 #define mp make_pair
 #define pu push_back
@@ -47,5 +48,7 @@ int main()
     vector<vector<double> > v = d2.getMatrix();
     Bipolarization b(d2);
     b.compute();
+    Basic_min_ordering bss(d2);
+    bss.compute();
     return 0;
 }

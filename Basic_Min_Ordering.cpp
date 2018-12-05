@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
-#include "Basic_Min_order.h"
-#include <iosteam>
+#include "Basic_Min_Ordering.h"
+#include <iostream>
 #include <fstream>
 using namespace std;
 
@@ -45,15 +45,11 @@ vector < pair < int,int> > basic_min_ordering()
 
 void Result(){
     ofstream _result;
-    std::vector<pair<int>> v;
-    vector<vector<double>> sqr_mat;
-    sqr_mat.resize(get_rows());
+    std::vector<pair<int, int>> v;
+    
+    v = basic_min_ordering();
+    _result.open("basic_min_ordering_out.txt");
     for(int i=0;i<get_rows();i++)
-      sqr_mat[i].assign(get_rows(),0);
-    sqr_mat = get_matrix();
-    v = basic_min_ordering(sqr_mat,get_rows());
-    _result.open("output.txt");
-    for(int i=0;i<get_rows;i++)
     {
       _result<<v[i].first<<","<<v[i].second<<endl;
     }

@@ -1,5 +1,5 @@
-#ifndef Basic_Min_order
-#define Basic_Min_order
+#ifndef Basic_Min_ordering_h_
+#define Basic_Min_ordering_h_
 #include "Matrix.h"
 #include "useful.h"
 #include "Square.h"
@@ -8,12 +8,13 @@
 class Basic_min_ordering: public Square
 {
   private:
-    Matrix _INPUT;
-    vector< pair <int,int> > basic_min_ordering(vector<vector<double>> v,int p);
+    // Matrix _INPUT;
+    vector< pair <int,int> > basic_min_ordering();
     void Result();
+
   public:
+    Basic_min_ordering(Dataset &d): Square(d) {}
     void compute();
-    Basic_min_ordering(Dataset &d): Square(d) {};
 };
 
 #endif
