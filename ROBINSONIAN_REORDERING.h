@@ -15,9 +15,9 @@ private:
   void solve(vector<vector<double>> &arr,int size);
   void call_solve();
 public:
-  Bipolarization(string filename) : Square(filename)
+  Bipolarization(Dataset &d) : Square(d)
   {
-    ifstream in( filename );
+    /*ifstream in( filename );
     string line;
     int countline = 0;
     vector<vector<double> > matrix;
@@ -57,7 +57,7 @@ public:
     setMatrix(matrix);
     set_rows(matrix.size());
     set_columns( matrix[0].size());
-    //for(int i=0;i<_n;i++) _permutation.push_back(i);
+    //for(int i=0;i<_n;i++) _permutation.push_back(i);*/
     }
   void compute();
 };

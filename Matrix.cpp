@@ -76,4 +76,3 @@ void Matrix::setElement(int i,int j,double k)
 {
     _matrix[i][j] = k;
 }
-

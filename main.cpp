@@ -2,6 +2,7 @@
 #include "Covariance.h"
 #include "Distance_Matrix.h"
 #include "Dataset.h"
+#include "ROBINSONIAN_REORDERING.h"
 #define mt make_tuple
 #define mp make_pair
 #define pu push_back
@@ -41,6 +42,7 @@ int main()
     cov.compute();
     DistanceMatrix d1(d);
     d1.compute();
+    Bipolarization b(d);
+    b.compute();
     return 0;
 }
-
