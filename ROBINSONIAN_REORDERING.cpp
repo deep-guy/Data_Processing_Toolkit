@@ -145,7 +145,7 @@ void Bipolarization::call_solve()
   solve(v,get_rows());
   _output = Matrix(get_rows(), get_rows());
   _output.setMatrix(v);
-  _output.output_to_csv("Robinsonian.txt");
+  _output.output_to_csv("Robinsonian.csv");
 }
 void Bipolarization::compute()
 {

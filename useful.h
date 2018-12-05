@@ -1,6 +1,7 @@
 #ifndef USEFUL
 #define USEFUL
 #include<bits/stdc++.h>
+#include "Record.h"
 
 using namespace std;
 
@@ -13,4 +14,5 @@ void sorted_normalized(vector<double> &v,map<int,int> &d);
 double min(double x,double y);
 double max(double x,double y);
 void p(vector<double> &v);
+void output_record_to_csv(vector<Record> v, string filename);
 #endif

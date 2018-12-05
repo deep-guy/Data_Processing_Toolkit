@@ -11,10 +11,11 @@ class Dataset
         vector<vector<string> > dataset_ar;
         vector<vector< double> > convertToMatrix;
         int _m,_n;
+        int userInput;
     public:
         Dataset();
         // Dataset(vector<vector<string>> dataset_ar1);
-        Dataset(string filename,int data);
+        Dataset(string filename);
         ~Dataset();
         Dataset(const Dataset&);
 
@@ -37,6 +38,8 @@ class Dataset
             }
             return record_Ar;
         }
+
+        int getUserInput() {return userInput;}
 };
 
 #endif

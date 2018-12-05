@@ -1,10 +1,4 @@
 #include<bits/stdc++.h>
-#include "Covariance.h"
-#include "Distance_Matrix.h"
-#include "Dataset.h"
-#include "ROBINSONIAN_REORDERING.h"
-#include "useful.h"
-#include "Task1.h"
 #define mt make_tuple
 #define mp make_pair
 #define pu push_back
@@ -29,32 +23,20 @@
 #define t(...) GET_MACRO(__VA_ARGS__,t5, t4, t3, t2, t1)(__VA_ARGS__)
 #define _ cout<<"here"<<endl;
 
+#include "Task1.h"
 
 using namespace std;
-
-int main()
+Task1::Task1(){}
+Task1::Task1(Dataset &d)
 {
-//   Covariance c("data.csv");
-//   c.compute();
-    // DistanceMatrix d("data.csv");
-    // d.compute();
-    string s = "Datasets/PRSA.csv";
-    Dataset d(s);
-    Covariance cov(d);
-    cov.compute();
-    DistanceMatrix d1(d);
-    d1.compute();
-    string k1 = "DistMat.csv";
-    Dataset d2(k1);
-    vector<vector<double> > v = d2.getMatrix();
-    Bipolarization b(d2);
-    b.compute();
-
-    int k;
-    cout<<"Input the number of clusters: ";
-    sc(k);
-    Task1 task(d);
-    task.output1(k,d.getUserInput());
-    task.output2(k,d.getUserInput());
-    return 0;
+    // records_ar = Task1_ar1;
+    records_ar = d.get_vector_record();
+    data = d;
+}
+Task1::Task1(const Task1& Task11)
+{
+    for (int i = 0; i < Task11.records_ar.size(); i ++)
+    {
+        records_ar.push_back(Task11.records_ar[i]);
+    }
 }

@@ -19,6 +19,11 @@ class Record
         {
             return record_ar;
         }
+
+        void addElement(string s)
+        {
+            record_ar.push_back(s);
+        }
 };
 
 #endif

@@ -45,7 +45,7 @@ Dataset::Dataset(const Dataset& dataset1)
     dataset_ar = dataset1.dataset_ar;
 }
 
-Dataset::Dataset(string filename,int data)
+Dataset::Dataset(string filename)
 {
     ifstream in( filename );
     string line;
@@ -78,20 +78,11 @@ Dataset::Dataset(string filename,int data)
     _n = dataset_ar[0].size();
 
     // If data is 1, then it's a csv of records and not a matrix. In that case, the user needs to input the number of non-numeric data members
-    if(data==1) 
-    {
-        cout<<"Enter the number of non-numeric variables in the file "<<filename<<": ";
-        int n;
-        sc(n);
-        convert(n);
-    }
-    else
-    {
-        for(int i=0;i<dataset_ar.size();i++)
-        {
-            for(int j=0;j<dataset_ar[i].size();j++) cout<<dataset_ar[i][j]<<" ";cout<<endl;
-        }
-    }
+    cout<<"Enter the number of non-numeric variables in the file "<<filename<<": ";
+    int n;
+    sc(n);
+    convert(n);
+    userInput = n;
     // for(int i=0;i<_n;i++) _permutation.push_back(i);
 }
 
