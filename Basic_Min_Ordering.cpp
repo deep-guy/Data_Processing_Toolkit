@@ -4,7 +4,7 @@
 #include <fstream>
 using namespace std;
 
-vector < pair < int,int> > basic_min_ordering()
+vector < pair < int,int> > Basic_min_ordering::basic_min_ordering()
 {
   int p = get_rows();
   vector<vector<double>> sqr_mat = get_matrix();  
@@ -43,12 +43,12 @@ vector < pair < int,int> > basic_min_ordering()
   return vect;
 }
 
-void Result(){
+void Basic_min_ordering::Result(){
     ofstream _result;
     std::vector<pair<int, int>> v;
     
     v = basic_min_ordering();
-    _result.open("basic_min_ordering_out.txt");
+    _result.open("basic_min_ordering_out.csv");
     for(int i=0;i<get_rows();i++)
     {
       _result<<v[i].first<<","<<v[i].second<<endl;
@@ -58,7 +58,7 @@ void Result(){
 }
 
 
-void compute()
+void Basic_min_ordering::compute()
 {
   Result();
 }

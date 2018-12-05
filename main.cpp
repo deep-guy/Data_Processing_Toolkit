@@ -35,26 +35,48 @@ using namespace std;
 
 int main()
 {
-    // string s = "Datasets/PRSA.csv";
-    string s = "data.csv";
-    Dataset d(s);
-    // Covariance cov(d);
-    // cov.compute();
-    DistanceMatrix d1(d);
-    d1.compute();
-    string k1 = "DistMat.csv";
-    Dataset d2(k1);
-    // vector<vector<double> > v = d2.getMatrix();
-    // Bipolarization b(d2);
-    // b.compute();
-
-    // int k;
-    // cout<<"Input the number of clusters: ";
-    // sc(k);
-    // Task1 task(d);
-    // task.output1(k,d.getUserInput());
-    // task.output2(k,d.getUserInput());
-    Basic_min_ordering bss(d2);
-    bss.compute();
-    return 0;
+  string s = "Datasets/PRSA.csv";
+  Dataset d(s);
+  string k1 = "DistMat.csv";
+  while(true)
+  {
+    cout<<"Select 1 for Covariance"<<endl<<"Select 2 for Distance"<<endl<<"Select 3 for Robinsonian Reordering"<<endl<<"Select 4 for k-Clustering"<<endl<<"Select 5 for Minimum Ordering"<<endl<<"Else press anything else to exit"<<endl;
+    int n;
+    sc(n);
+    if(n==1)
+    {
+      Covariance cov(d);
+      cov.compute();
+    }
+    else if(n==2)
+    {
+      DistanceMatrix d1(d);
+      d1.compute();
+    }
+    else if(n==3)
+    {
+      Dataset d2(k1);
+      Bipolarization b(d2);
+      b.compute();
+    }
+    else if(n==4)
+    {
+      int k;
+      cout<<"Input the number of clusters: ";
+      sc(k);
+      Task1 task(d);
+      task.output1(k,d.getUserInput());
+      task.output2(k,d.getUserInput());
+    }
+    else if(n==5)
+    {
+      Dataset d2(k1);
+      Basic_min_ordering bss(d2);
+      bss.compute();
+    }
+    else break;
+  }
+  // string s = "data.csv";
+  
+  return 0;
 }
