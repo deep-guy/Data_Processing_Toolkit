@@ -8,10 +8,9 @@ class Covariance: public Square
 {
   private:
     double getVariance(vector<double> &v);
-    string filename;
 
   public:
-    Covariance(string filename):Square(filename){};
+    Covariance(Dataset &d):Square(d){};
 
     void compute();
 };

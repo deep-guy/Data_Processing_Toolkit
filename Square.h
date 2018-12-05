@@ -10,7 +10,7 @@ class Square : public Matrix
 {
 
   public: 
-    Square(string filename): Matrix(filename){};
+    Square(Dataset &d): Matrix(d){};
     Square(int m): Matrix(m, m){};  
   protected:
     // The real computation for your algorithm

@@ -28,10 +28,10 @@
 using namespace std;
 
 Dataset::Dataset(){}
-Dataset::Dataset(vector<vector<string>> dataset_ar1)
-{
-    dataset_ar = dataset_ar1;
-}
+// Dataset::Dataset(vector<vector<string>> dataset_ar1)
+// {
+//     dataset_ar = dataset_ar1;
+// }
 Dataset::~Dataset()
 {
     for (int i = 0; i < dataset_ar.size(); i ++)
@@ -43,4 +43,61 @@ Dataset::~Dataset()
 Dataset::Dataset(const Dataset& dataset1)
 {
     dataset_ar = dataset1.dataset_ar;
+}
+
+Dataset::Dataset(string filename,int data)
+{
+    ifstream in( filename );
+    string line;
+    int countline = 0;
+    while (getline( in, line ) )                   // read a whole line of the file
+    {
+        stringstream ss( line );                     // put it in a stringstream (internal stream)
+        vector<string> row;
+        string data;
+        
+        if(countline==0) // The first row is filled with names
+        {
+            countline = 1;
+            // while ( getline( ss, data, ',' ) )  
+            // {
+            //     _names.push_back(data);           
+            // }
+            continue;
+        }
+
+
+        while ( getline( ss, data, ',' ) )           // read (string) items up to a comma
+        {
+            row.push_back( data);            // use stod() to convert to double; put in row vector
+        }
+        if ( row.size() > 0 ) dataset_ar.push_back( row );    // add non-empty rows to matrix
+    }
+
+    _m = dataset_ar.size();
+    _n = dataset_ar[0].size();
+
+    // If data is 1, then it's a csv of records and not a matrix. In that case, the user needs to input the number of non-numeric data members
+    if(data==1) 
+    {
+        cout<<"Enter the number of non-numeric variables in the file "<<filename<<": ";
+        int n;
+        sc(n);
+        convert(n);
+    }
+    // for(int i=0;i<_n;i++) _permutation.push_back(i);
+}
+
+void Dataset::convert(int n)
+{
+    for(int i=0;i<dataset_ar.size();i++)
+    {
+        vector<double> v;
+        for(int j=n;j<dataset_ar[i].size();j++)
+        {
+            v.pu(stod(dataset_ar[i][j]));
+        }
+        convertToMatrix.pu(v);
+
+    }
 }

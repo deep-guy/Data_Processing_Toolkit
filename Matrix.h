@@ -3,6 +3,7 @@
 
 #include <bits/stdc++.h>
 #include"useful.h"
+#include "Dataset.h"
 using namespace std;
 
 // This is the base class that we will be using for the project;
@@ -23,7 +24,7 @@ class Matrix
 
     public:
         Matrix();
-        Matrix(string filename);
+        Matrix(Dataset &d);
         Matrix(int, int);
         // ~Matrix(); Vectors don't need explicit destructors
 
@@ -41,8 +42,8 @@ class Matrix
         void setElement(int i,int j,double k);
         void setPermutation(vector<int>&v) {_permutation = v;}
         void setMatrix(vector<vector<double> > v) {_matrix = v;}
-        int set_rows(int val) {_m=val;}
-        int set_columns(int val) {_n=val;}
+        void set_rows(int val) {_m=val;}
+        void set_columns(int val) {_n=val;}
 };
 
 #endif

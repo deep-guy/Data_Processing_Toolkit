@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 #include "Covariance.h"
 #include "Distance_Matrix.h"
+#include "Dataset.h"
 #define mt make_tuple
 #define mp make_pair
 #define pu push_back
@@ -32,8 +33,14 @@ int main()
 {
 //   Covariance c("data.csv");
 //   c.compute();
-    DistanceMatrix d("data.csv");
-    d.compute();
+    // DistanceMatrix d("data.csv");
+    // d.compute();
+    string s = "data.csv";
+    Dataset d(s,1);
+    Covariance cov(d);
+    cov.compute();
+    DistanceMatrix d1(d);
+    d1.compute();
     return 0;
 }
 

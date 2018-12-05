@@ -22,7 +22,8 @@ class DistanceMatrix : public Square
         void createDistanceMatrix();
 
     public:
-        DistanceMatrix(string filename) : Square(filename) {}
+        // DistanceMatrix(string filename) : Square(filename) {}
+        DistanceMatrix(Dataset &d): Square(d) {}
         void compute();
 };
 

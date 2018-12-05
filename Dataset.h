@@ -8,18 +8,25 @@ using namespace std;
 class Dataset
 {
     private:
-        vector<vector<string>> dataset_ar;
+        vector<vector<string> > dataset_ar;
+        vector<vector< double> > convertToMatrix;
+        int _m,_n;
     public:
         Dataset();
-        Dataset(vector<vector<string>> dataset_ar1);
+        // Dataset(vector<vector<string>> dataset_ar1);
+        Dataset(string filename,int data);
         ~Dataset();
         Dataset(const Dataset&);
 
+        void convert(int n);
+        // void getInput(string filename);
         //getters
         vector<vector<string>> get_dataset_ar()
         {
             return dataset_ar;
         }
+
+        vector<vector<double> > & getMatrix() {return  convertToMatrix;}
         vector<Record> get_vector_record()
         {
             vector<Record> record_Ar;
