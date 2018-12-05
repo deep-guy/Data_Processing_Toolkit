@@ -97,7 +97,7 @@ void DistanceMatrix::createDistanceMatrix()
         }
     }
 
-    _output.output_to_csv("DistMat.txt");
+    _output.output_to_csv("DistMat.csv");
 }
 
 void DistanceMatrix::compute()

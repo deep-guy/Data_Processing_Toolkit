@@ -66,11 +66,11 @@ Dataset::Dataset(string filename,int data)
             continue;
         }
 
-
         while ( getline( ss, data, ',' ) )           // read (string) items up to a comma
         {
             row.push_back( data);            // use stod() to convert to double; put in row vector
         }
+        if(row.size()==1 && row[row.size()-1]=="eof") continue;
         if ( row.size() > 0 ) dataset_ar.push_back( row );    // add non-empty rows to matrix
     }
 
@@ -84,6 +84,13 @@ Dataset::Dataset(string filename,int data)
         int n;
         sc(n);
         convert(n);
+    }
+    else
+    {
+        for(int i=0;i<dataset_ar.size();i++)
+        {
+            for(int j=0;j<dataset_ar[i].size();j++) cout<<dataset_ar[i][j]<<" ";cout<<endl;
+        }
     }
     // for(int i=0;i<_n;i++) _permutation.push_back(i);
 }

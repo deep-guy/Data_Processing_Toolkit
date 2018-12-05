@@ -45,12 +45,12 @@ void Matrix::output_to_csv(string filename)
 
     // for(int i=0;i<_permutation.size();i++) out<<_permutation[i]<<" ";out<<endl;
 
-    out<<_m<<" "<<_n<<endl;
+    out<<_m<<","<<_n<<endl;
     for(int i=0;i<_m;i++)
     {
         for(int j=0;j<_n-1;j++)
         {
-            out<<_matrix[i][j]<<", ";
+            out<<_matrix[i][j]<<",";
         }
         out<<_matrix[i][_n-1]<<endl;
     }

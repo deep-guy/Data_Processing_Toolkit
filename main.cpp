@@ -42,7 +42,10 @@ int main()
     cov.compute();
     DistanceMatrix d1(d);
     d1.compute();
-    Bipolarization b(d);
+    string k = "DistMat.csv";
+    Dataset d2(k,1);
+    vector<vector<double> > v = d2.getMatrix();
+    Bipolarization b(d2);
     b.compute();
     return 0;
 }
