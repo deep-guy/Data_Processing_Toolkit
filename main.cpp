@@ -5,6 +5,7 @@
 #include "ROBINSONIAN_REORDERING.h"
 #include "useful.h"
 #include "Task1.h"
+#include "Basic_Min_Ordering.h" 
 #define mt make_tuple
 #define mp make_pair
 #define pu push_back
@@ -34,27 +35,26 @@ using namespace std;
 
 int main()
 {
-//   Covariance c("data.csv");
-//   c.compute();
-    // DistanceMatrix d("data.csv");
-    // d.compute();
-    string s = "Datasets/PRSA.csv";
+    // string s = "Datasets/PRSA.csv";
+    string s = "data.csv";
     Dataset d(s);
-    Covariance cov(d);
-    cov.compute();
+    // Covariance cov(d);
+    // cov.compute();
     DistanceMatrix d1(d);
     d1.compute();
     string k1 = "DistMat.csv";
     Dataset d2(k1);
-    vector<vector<double> > v = d2.getMatrix();
-    Bipolarization b(d2);
-    b.compute();
+    // vector<vector<double> > v = d2.getMatrix();
+    // Bipolarization b(d2);
+    // b.compute();
 
-    int k;
-    cout<<"Input the number of clusters: ";
-    sc(k);
-    Task1 task(d);
-    task.output1(k,d.getUserInput());
-    task.output2(k,d.getUserInput());
+    // int k;
+    // cout<<"Input the number of clusters: ";
+    // sc(k);
+    // Task1 task(d);
+    // task.output1(k,d.getUserInput());
+    // task.output2(k,d.getUserInput());
+    Basic_min_ordering bss(d2);
+    bss.compute();
     return 0;
 }
